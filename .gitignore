@@ -1,0 +1,14 @@
+/.phpunit.cache
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+/.fleet
+/.idea
+/.vscode
+/.php-cs-fixer.cache
+vendor
+composer.lock
+.rr.yaml
+rr
+

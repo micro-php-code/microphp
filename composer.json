@@ -1,0 +1,21 @@
+{
+    "name": "simple/simple",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "liutao",
+            "email": "gg.cn.lt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "simple/framework": "dev-main"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
