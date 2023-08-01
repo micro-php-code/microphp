@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 namespace App\Controller;
-use Simple\Framework\Controller;
-use Simple\Framework\Http\Response;
-use Simple\Framework\Http\ServerRequest;
+use MicroPHP\Framework\Controller;
+use MicroPHP\Framework\Http\Response;
+use MicroPHP\Framework\Http\ServerRequest;
 
 class Index extends Controller
 {

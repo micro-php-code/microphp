@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Simple\Framework\Application;
+use MicroPHP\Framework\Application;
 
 require __DIR__.'/vendor/autoload.php';
 
