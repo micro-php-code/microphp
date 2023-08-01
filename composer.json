@@ -1,5 +1,5 @@
 {
-    "name": "simple/simple",
+    "name": "simple-php/simple",
     "type": "project",
     "autoload": {
         "psr-4": {
