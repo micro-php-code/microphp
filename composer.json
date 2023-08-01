@@ -1,5 +1,5 @@
 {
-    "name": "microphp/simple",
+    "name": "microphp/microphp",
     "type": "project",
     "autoload": {
         "psr-4": {
