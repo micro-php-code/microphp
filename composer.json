@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=8.0",
-        "simple/framework": "dev-main"
+        "microphp/framework": "dev-main"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
