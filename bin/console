@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\Console\Application;
+
+require __DIR__.'/../vendor/autoload.php';
+
+date_default_timezone_set('Asia/Shanghai');
+
+$application = new Application();
+
+$commands = require __DIR__.'/../config/commands.php';
+
+$application->addCommands(array_map(static function (string $command) {
+    return new $command();
+}, $commands));
+
+/** @noinspection PhpUnhandledExceptionInspection */
+$application->run();
