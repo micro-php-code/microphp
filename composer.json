@@ -6,6 +6,11 @@
             "App\\": "app/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "liutao",
@@ -17,7 +22,8 @@
         "microphp/framework": "dev-master"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.22.0"
+        "friendsofphp/php-cs-fixer": "^3.22.0",
+        "phpunit/phpunit": "^10.2"
     },
     "scripts": {
         "cs": [
