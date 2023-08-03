@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Controller\Index;
 use App\Middleware\NothingMiddleware;
 use League\Route\Router;
-use Nyholm\Psr7\Response;
+use MicroPHP\Framework\Http\Response;
 
 $router = new Router();
 
