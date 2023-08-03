@@ -1,21 +1,10 @@
 #!/usr/bin/env php
 <?php
-
 declare(strict_types=1);
 
-use Symfony\Component\Console\Application;
+use MicroPHP\Framework\ConsoleApplication;
 
-require __DIR__.'/../vendor/autoload.php';
-
-date_default_timezone_set('Asia/Shanghai');
-
-$application = new Application();
-
-$commands = require __DIR__.'/../config/commands.php';
-
-$application->addCommands(array_map(static function (string $command) {
-    return new $command();
-}, $commands));
+require_once 'bootstrap.php';
 
 /** @noinspection PhpUnhandledExceptionInspection */
-$application->run();
+ConsoleApplication::boot();

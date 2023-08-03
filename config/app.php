@@ -2,4 +2,11 @@
 
 declare(strict_types=1);
 
-return [];
+return [
+    'scanner' => [
+        'directories' => [
+            'app',
+            'vendor/microphp/framework/src',
+        ]
+    ]
+];
