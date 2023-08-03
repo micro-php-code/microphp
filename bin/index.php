@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MicroPHP\Framework\Application;
 
-require_once 'bootstrap.php';
-
+/** @var Application $application */
+$application = require_once 'bootstrap.php';
 /** @noinspection PhpUnhandledExceptionInspection */
-Application::run();
+$application->run();

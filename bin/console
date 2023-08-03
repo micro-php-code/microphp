@@ -2,9 +2,11 @@
 <?php
 declare(strict_types=1);
 
+use MicroPHP\Framework\Application;
 use MicroPHP\Framework\ConsoleApplication;
 
-require_once 'bootstrap.php';
+/** @var Application $application */
+$application = require_once 'bootstrap.php';
 
 /** @noinspection PhpUnhandledExceptionInspection */
-ConsoleApplication::boot();
+ConsoleApplication::boot($application);

@@ -14,4 +14,5 @@ $router->get('/', [Index::class, 'index'])->middleware(new NothingMiddleware());
 $router->get('/favicon.ico', function () {
     return new Response(200, [], '');
 });
+
 return $router;

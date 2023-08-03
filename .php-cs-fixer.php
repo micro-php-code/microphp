@@ -209,4 +209,10 @@ return (new PhpCsFixer\Config())
             'elements' => ['method', 'property'],
         ],
         'whitespace_after_comma_in_array' => true,
-    ]);
+    ])->setFinder(
+        PhpCsFixer\Finder::create()
+            ->exclude('public')
+            ->exclude('runtime')
+            ->exclude('vendor')
+            ->in(__DIR__)
+    );
