@@ -19,6 +19,11 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.22.0"
     },
+    "scripts": {
+        "cs": [
+            "./vendor/bin/php-cs-fixer fix --verbose"
+        ]
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

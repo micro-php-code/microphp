@@ -7,3 +7,9 @@
 ```shell
   php bin/console start
 ```
+
+
+#### 格式化代码
+```shell
+  composer cs ./app
+```
