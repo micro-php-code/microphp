@@ -18,13 +18,13 @@
       SERVER_DRIVER=workerman
     ```
 
-#### 运行
+### 运行
 ```shell
   php bin/console start
 ```
 
 
-#### 格式化代码
+### 格式化代码
 ```shell
   composer cs ./app
 ```
