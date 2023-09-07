@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use App\Controller\Index;
 use App\Middleware\NothingMiddleware;
-use League\Route\Router;
 use MicroPHP\Framework\Http\Response;
+use MicroPHP\Framework\Router\Router;
 
 $router = new Router();
 
