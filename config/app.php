@@ -11,7 +11,6 @@ return [
     'scanner' => [
         'directories' => [
             'app',
-            'vendor/microphp/framework/src',
         ],
     ],
     'server' => [
