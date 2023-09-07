@@ -15,7 +15,7 @@
     ```
 2. 修改.env中驱动
     ```dotenv
-      SERVER_DRIVER=workerman
+      SERVER_DRIVER=roadrunner
     ```
 
 ### 运行
