@@ -10,6 +10,7 @@ use MicroPHP\Framework\Router\Router;
 $router = new Router();
 
 $router->get('/', [Index::class, 'index'])->middleware(new NothingMiddleware());
+$router->post('/', [Index::class, 'index'])->middleware(new NothingMiddleware());
 
 $router->get('/favicon.ico', function () {
     return new Response(200, [], '');
