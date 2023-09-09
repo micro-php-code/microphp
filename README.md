@@ -1,10 +1,10 @@
 ### 安装驱动
-#### 一. 安装workerman驱动
+#### 一. 使用workerman驱动
 ```shell
     composer require microphp/workerman
 ```
 
-#### 二. 安装roadrunner驱动
+#### 二. 使用roadrunner驱动
 ```shell
     composer require microphp/roadrunner
 ```
@@ -17,7 +17,7 @@
     ```dotenv
       SERVER_DRIVER=roadrunner
     ```
-#### 三. 安装swoole驱动
+#### 三. 使用swoole驱动
 ```shell
     composer require microphp/swoole
 ```
