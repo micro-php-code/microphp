@@ -17,6 +17,10 @@
     ```dotenv
       SERVER_DRIVER=roadrunner
     ```
+#### 三. 安装swoole驱动
+```shell
+    composer require microphp/swoole
+```
 
 ### 运行
 ```shell
