@@ -22,6 +22,10 @@
     composer require microphp/swoole
 ```
 
+1. 修改.env中驱动
+    ```dotenv
+      SERVER_DRIVER=swoole
+
 ### 运行
 ```shell
   php bin/console start
