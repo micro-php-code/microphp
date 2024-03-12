@@ -30,6 +30,10 @@ composer require microphp/swoole
    ```shell
    php bin/console config:publish swoole
    ```
+#### 四. 使用AMP驱动
+```shell
+composer require microphp/amp
+```
 
 ### 运行
 ```shell
