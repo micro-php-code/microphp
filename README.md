@@ -45,3 +45,11 @@ php bin/console start
 ```shell
 composer cs ./app
 ```
+
+### 生成Swagger文档
+```shell
+发布配置
+php bin/console config:publish swagger
+生成文档
+php bin/console swagger:gen
+```
