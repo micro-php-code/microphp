@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Dto\Request\IndexGetReq;
 use App\Dto\Response\IndexGetRes;
+use App\Util\JsonResponse;
 use MicroPHP\Framework\Controller;
 use MicroPHP\Framework\Http\Response;
 use MicroPHP\Framework\Http\ServerRequest;
@@ -27,7 +28,7 @@ class IndexController extends Controller
 
     #[Get(summary: '首页', tags: [self::TAG])]
     #[SuccessJsonResponse(ref: IndexGetRes::class)]
-    public function index(ServerRequest $request): Response
+    public function index(): Response
     {
         return $this->json('Hello World');
     }
@@ -37,6 +38,10 @@ class IndexController extends Controller
     #[SuccessJsonResponse(ref: IndexGetRes::class)]
     public function get(ServerRequest $request): Response
     {
-        return $this->json(new IndexGetRes(['id' => $request->input('id'), 'name' => 'hello']));
+        $param = IndexGetReq::fromRequest($request);
+
+        return $this->json(
+            JsonResponse::success(new IndexGetRes(['id' => $param->id, 'name' => 'hello']))
+        );
     }
 }
