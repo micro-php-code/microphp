@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Dto\Request\IndexGetReq;
 use App\Dto\Response\IndexGetRes;
+use App\Service\BookService;
 use App\Util\JsonResponse;
 use MicroPHP\Framework\Controller;
 use MicroPHP\Framework\Http\Response;
@@ -26,6 +27,10 @@ class IndexController extends Controller
 {
     public const TAG = 'Index';
 
+    public function __construct(
+        private readonly BookService $bookService
+    ) {}
+
     #[Get(summary: '首页', tags: [self::TAG])]
     #[SuccessJsonResponse(ref: IndexGetRes::class)]
     public function index(): Response
@@ -39,9 +44,9 @@ class IndexController extends Controller
     public function get(ServerRequest $request): Response
     {
         $param = IndexGetReq::fromRequest($request);
-
+        $result = $this->bookService->get($param);
         return $this->json(
-            JsonResponse::success(new IndexGetRes(['id' => $param->id, 'name' => 'hello']))
+            JsonResponse::success($result ? IndexGetRes::from($result) : null)
         );
     }
 }

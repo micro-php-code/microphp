@@ -11,6 +11,7 @@ return [
     'scanner' => [
         'directories' => [
             'app',
+            'framework',
         ],
     ],
     'server' => [

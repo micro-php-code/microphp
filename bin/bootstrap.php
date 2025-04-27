@@ -11,4 +11,6 @@ date_default_timezone_set('Asia/Shanghai');
 ! defined('BASE_PATH') && define('BASE_PATH', __DIR__ . '/../');
 
 /** @noinspection PhpUnhandledExceptionInspection */
-return Application::boot();
+$app = Application::boot();
+
+return $app;
