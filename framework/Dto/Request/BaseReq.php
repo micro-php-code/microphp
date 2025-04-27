@@ -7,7 +7,7 @@ namespace MicroPHP\Framework\Dto\Request;
 use MicroPHP\Data\Data;
 use MicroPHP\Framework\Dto\ConstraintsTrait;
 use MicroPHP\Framework\Exception\ValidateException;
-use MicroPHP\Framework\Http\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
 use TypeError;
 
 class BaseReq extends Data
@@ -17,7 +17,7 @@ class BaseReq extends Data
     /**
      * @throws
      */
-    public static function fromRequest(array|ServerRequest $request): static
+    public static function fromRequest(array|ServerRequestInterface $request): static
     {
         return static::_catch($request);
     }
@@ -25,11 +25,11 @@ class BaseReq extends Data
     /**
      * @throws
      */
-    protected static function _catch(array|ServerRequest $request): static
+    protected static function _catch(array|ServerRequestInterface $request): static
     {
         $instance = new static();
         try {
-            $instance->fill($request instanceof ServerRequest ? array_merge($request->all(), $request->getUploadedFiles()) : $request);
+            $instance->fill($request instanceof ServerRequestInterface ? array_merge($request->all(), $request->getUploadedFiles()) : $request);
         } catch (TypeError $e) {
             $pattern = '/[A-Za-z0-9_\\\]+::\$(\w+)/';
             $message = preg_replace($pattern, '$1', $e->getMessage());

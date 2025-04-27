@@ -9,8 +9,8 @@ use MicroPHP\Swagger\Schema\Property;
 use MicroPHP\Swagger\Schema\Schema;
 use Symfony\Component\Validator\Constraints\Positive;
 
-#[Schema(title: 'index请求参数')]
-class IndexGetReq extends BaseReq
+#[Schema(title: 'book请求参数')]
+class BookGetReq extends BaseReq
 {
     #[Property(title: 'ID', example: 1)]
     #[Positive(message: 'ID必须为正整数')]

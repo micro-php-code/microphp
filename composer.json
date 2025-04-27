@@ -23,9 +23,11 @@
     ],
     "require": {
         "php": ">=8.0",
-        "microphp/data": "^2.0",
-        "microphp/contract": "^2.0",
-        "microphp/swagger": "^2.0",
+        "microphp/data": "dev-master",
+        "microphp/contract": "dev-master",
+        "microphp/swagger": "dev-master",
+        "microphp/workerman": "dev-master",
+        "microphp/swoole": "dev-master",
         "cycle/orm": "^2.10",
         "cycle/annotated": "^4.2",
         "cycle/entity-behavior": "^1.4",
@@ -56,5 +58,23 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "microphp/data": {
+            "type": "path",
+            "url": "../data"
+        },
+        "microphp/swoole": {
+            "type": "path",
+            "url": "../swoole"
+        },
+        "microphp/swagger": {
+            "type": "path",
+            "url": "../swagger"
+        },
+        "microphp/workerman": {
+            "type": "path",
+            "url": "../workerman"
+        }
+    }
 }

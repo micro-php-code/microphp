@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace MicroPHP\Framework;
 
-use League\Route\Strategy\ApplicationStrategy;
 use MicroPHP\Framework\Attribute\Scanner\AttributeScanner;
 use MicroPHP\Framework\Attribute\Scanner\AttributeScannerMap;
 use MicroPHP\Framework\Config\Config;
 use MicroPHP\Framework\Container\Container;
 use MicroPHP\Framework\Container\ContainerInterface;
 use MicroPHP\Framework\Http\ServerFactory;
+use MicroPHP\Framework\Router\ApplicationStrategy;
 use MicroPHP\Framework\Router\Router;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;

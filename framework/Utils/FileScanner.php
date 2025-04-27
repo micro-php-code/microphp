@@ -28,7 +28,7 @@ trait FileScanner
             }
 
             // 读取类名
-            if ($tokens[$i][0] === T_CLASS && isset($tokens[$i + 2][1])) {
+            if ($tokens[$i][0] === T_CLASS && ! empty(trim($tokens[$i + 2][1] ?? ''))) {
                 return $this->getReflectionClass($tokens[$i + 2][1], $namespace);
             }
         }

@@ -9,8 +9,8 @@ use MicroPHP\Data\Data;
 use MicroPHP\Swagger\Schema\Property;
 use MicroPHP\Swagger\Schema\Schema;
 
-#[Schema(title: 'index响应参数')]
-class IndexGetRes extends Data
+#[Schema(title: 'book响应参数')]
+class BookGetRes extends Data
 {
     #[Property(title: 'ID', example: 1)]
     public int $id;
