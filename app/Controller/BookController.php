@@ -11,7 +11,6 @@ use App\Service\BookService;
 use App\Util\JsonResponse;
 use MicroPHP\Framework\Controller;
 use MicroPHP\Framework\Http\Response;
-use MicroPHP\Framework\Http\ServerRequest;
 use MicroPHP\Swagger\Schema\Get;
 use MicroPHP\Swagger\Schema\Post;
 use MicroPHP\Swagger\Schema\RequestBody;
@@ -46,7 +45,7 @@ class BookController extends Controller
     public function get(BookGetReq $param): Response
     {
         $result = $this->bookService->get($param);
-        if (!$result) {
+        if (! $result) {
             throw new InvalidArgumentException();
         }
         return $this->json(JsonResponse::success(BookGetRes::from($result)));

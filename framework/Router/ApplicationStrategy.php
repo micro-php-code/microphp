@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MicroPHP\Framework\Router;
@@ -13,13 +14,14 @@ use ReflectionException;
 class ApplicationStrategy extends \League\Route\Strategy\ApplicationStrategy
 {
     private static array $cache = [];
+
     /**
      * @throws ReflectionException
      */
-    public function invokeRouteCallable(Route|\MicroPHP\Framework\Router\Route $route, ServerRequestInterface $request): ResponseInterface
+    public function invokeRouteCallable(\MicroPHP\Framework\Router\Route|Route $route, ServerRequestInterface $request): ResponseInterface
     {
         $controller = $route->getCallable($this->getContainer());
-        $key = $route->getMethod(). '::'.$route->getPath();
+        $key = $route->getMethod() . '::' . $route->getPath();
 
         if (static::$cache[$key] ?? false) {
             $response = $controller(static::$cache[$key]::fromRequest($request), $route->getVars());
