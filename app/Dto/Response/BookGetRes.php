@@ -19,12 +19,10 @@ class BookGetRes extends BaseRes
     public string $name;
 
     #[Property(title: '创建时间', example: 1745735933)]
-    public DateTimeImmutable $created_at;
+    public int $created_at;
 
-    public function toArray(): array
+    protected function beforeFill(array &$data): void
     {
-        $result = parent::toArray();
-        $result['created_at'] = $this->created_at->getTimestamp();
-        return $result;
+        $data['created_at'] = $data['created_at'] instanceof DateTimeImmutable ? $data['created_at']->getTimestamp() : $data['created_at'];
     }
 }
