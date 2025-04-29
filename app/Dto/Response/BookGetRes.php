@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Dto\Response;
 
 use DateTimeImmutable;
-use MicroPHP\Data\Data;
+use MicroPHP\Framework\Dto\Response\BaseRes;
 use MicroPHP\Swagger\Schema\Property;
 use MicroPHP\Swagger\Schema\Schema;
 
 #[Schema(title: 'book响应参数')]
-class BookGetRes extends Data
+class BookGetRes extends BaseRes
 {
     #[Property(title: 'ID', example: 1)]
     public int $id;

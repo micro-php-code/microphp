@@ -33,7 +33,7 @@ class Logger
             switch ($handlerType) {
                 case LoggerHandler::STDOUT:
                     $handler = new StreamHandler('php://stdout');
-                    $handler->setFormatter(new ColoredLineFormatter(new DefaultScheme(), allowInlineLineBreaks: true, ignoreEmptyContextAndExtra: true, includeStacktraces: true));
+                    $handler->setFormatter(new ColoredLineFormatter(new DefaultScheme(), dateFormat: 'Y-m-d H:i:s', allowInlineLineBreaks: true, ignoreEmptyContextAndExtra: true, includeStacktraces: true));
                     break;
                 case LoggerHandler::ROTATING_FILE:
                     $handler = new RotatingFileHandler(base_path("runtime/logs/{$channel}.log"), 7);
@@ -49,6 +49,11 @@ class Logger
             $monolog->pushHandler($handler);
         }
         return new Logger($monolog);
+    }
+
+    public static function stdout(string $channel = 'app'): Logger
+    {
+        return self::get([LoggerHandler::STDOUT], $channel);
     }
 
     public function debug(string|Stringable $message, array $context = []): void
