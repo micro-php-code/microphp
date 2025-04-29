@@ -15,7 +15,6 @@ use MicroPHP\Framework\Router\Router;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionException;
-use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
 final class Application
@@ -31,7 +30,7 @@ final class Application
     {
         $app = new Application();
         $app->init();
-        self::getContainer()->add(Application::class, $app);
+        self::getContainer()->addShared(Application::class, $app);
 
         return $app;
     }
@@ -41,11 +40,11 @@ final class Application
      * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      */
-    public function run(OutputInterface $output): Application
+    public function run(): Application
     {
         $app = new Application();
         $app->init();
-        $app->listen($output);
+        $app->listen();
 
         return $app;
     }
@@ -80,17 +79,17 @@ final class Application
         $this->scanAttributes($config['app']['scanner']);
         $router = $this->getRouter($config['routes']);
         $router->middlewares($config['middlewares']);
-        Application::getContainer()->add(Router::class, $router);
+        Application::getContainer()->addShared(Router::class, $router);
     }
 
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    private function listen(OutputInterface $output): void
+    private function listen(): void
     {
         $router = Application::getContainer()->get(Router::class);
-        ServerFactory::newServer()->run($router, $output);
+        ServerFactory::newServer()->run($router);
     }
 
     /**
@@ -116,7 +115,7 @@ final class Application
     private function scanAttributes(array $config): void
     {
         $result = (new AttributeScanner())->scan($config['directories']);
-        Application::$container->add(AttributeScannerMap::class, $result);
+        Application::$container->addShared(AttributeScannerMap::class, $result);
     }
 
     private function initContainer(): void

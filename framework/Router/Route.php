@@ -57,7 +57,7 @@ class Route extends \League\Route\Route
             }
         }
         $instance = $reflection->newInstanceArgs($params);
-        $container->add($class, $instance);
+        $container->addShared($class, $instance);
         return $instance;
     }
 }

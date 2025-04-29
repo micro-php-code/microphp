@@ -30,10 +30,10 @@ class StartCommand extends Command
         $serverConfig = new ServerConfig();
 
         return match ($serverConfig->getDriver()) {
-            Driver::WORKERMAN => $this->workermanStart($output),
+            Driver::WORKERMAN => $this->workermanStart(),
             Driver::ROADRUNNER => $this->roadrunnerStart($output, $serverConfig),
-            Driver::SWOOLE => $this->swooleStart($output),
-            Driver::AMP => $this->ampStart($output),
+            Driver::SWOOLE => $this->swooleStart(),
+            Driver::AMP => $this->ampStart(),
             default => throw new RuntimeException('unsupported driver: ' . $serverConfig->getDriver()),
         };
     }
@@ -74,9 +74,9 @@ class StartCommand extends Command
      * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      */
-    private function workermanStart(OutputInterface $output): int
+    private function workermanStart(): int
     {
-        Application::getClass(Application::class)->run($output);
+        Application::getClass(Application::class)->run();
 
         return Command::SUCCESS;
     }
@@ -86,9 +86,9 @@ class StartCommand extends Command
      * @throws NotFoundExceptionInterface
      * @throws ReflectionException
      */
-    private function swooleStart(OutputInterface $output): int
+    private function swooleStart(): int
     {
-        Application::getClass(Application::class)->run($output);
+        Application::getClass(Application::class)->run();
 
         return Command::SUCCESS;
     }
@@ -98,9 +98,9 @@ class StartCommand extends Command
      * @throws ReflectionException
      * @throws NotFoundExceptionInterface
      */
-    private function ampStart(OutputInterface $output): int
+    private function ampStart(): int
     {
-        Application::getClass(Application::class)->run($output);
+        Application::getClass(Application::class)->run();
 
         return Command::SUCCESS;
     }

@@ -15,18 +15,8 @@ trait HttpServerTrait
 {
     protected static string $runtimeDir = 'runtime';
 
-    protected function createRuntimeDir(): void
-    {
-        if (! is_dir(self::$runtimeDir)) {
-            mkdir(base_path(self::$runtimeDir));
-        }
-        if (! is_dir(base_path(self::$runtimeDir . '/logs'))) {
-            mkdir(base_path(self::$runtimeDir . '/logs'));
-        }
-    }
-
     /** @noinspection PhpRedundantCatchClauseInspection */
-    protected function routeDispatch(Router $router, ServerRequest $request): ResponseInterface
+    public function routeDispatch(Router $router, ServerRequest $request): ResponseInterface
     {
         try {
             return $router->dispatch($request);
@@ -34,6 +24,16 @@ trait HttpServerTrait
             return new Response(404, [], $exception->getMessage());
         } catch (MethodNotAllowedException $exception) {
             return new Response(405, [], $exception->getMessage());
+        }
+    }
+
+    protected function createRuntimeDir(): void
+    {
+        if (! is_dir(self::$runtimeDir)) {
+            mkdir(base_path(self::$runtimeDir));
+        }
+        if (! is_dir(base_path(self::$runtimeDir . '/logs'))) {
+            mkdir(base_path(self::$runtimeDir . '/logs'));
         }
     }
 }

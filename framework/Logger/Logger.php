@@ -7,6 +7,7 @@ namespace MicroPHP\Framework\Logger;
 use Bramus\Monolog\Formatter\ColoredLineFormatter;
 use Bramus\Monolog\Formatter\ColorSchemes\DefaultScheme;
 use InvalidArgumentException;
+use MicroPHP\Framework\Application;
 use MicroPHP\Framework\Logger\Enum\LoggerHandler;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\RotatingFileHandler;
@@ -25,9 +26,13 @@ class Logger
 
     /**
      * @param array<LoggerHandler> $handlers
+     * @throws
      */
     public static function get(array $handlers = [LoggerHandler::STDOUT, LoggerHandler::ROTATING_FILE], string $channel = 'app'): Logger
     {
+        if (Application::getContainer()->has(Logger::class)) {
+            return Application::getContainer()->get(Logger::class);
+        }
         $monolog = new MonologLogger($channel);
         foreach ($handlers as $handlerType) {
             switch ($handlerType) {
@@ -48,7 +53,9 @@ class Logger
             }
             $monolog->pushHandler($handler);
         }
-        return new Logger($monolog);
+        $logger = new Logger($monolog);
+        Application::getContainer()->addShared(Logger::class, $logger);
+        return $logger;
     }
 
     public static function stdout(string $channel = 'app'): Logger

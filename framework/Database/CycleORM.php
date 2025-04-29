@@ -77,7 +77,7 @@ class CycleORM
 
         $commandGenerator = new EventDrivenCommandGenerator($schema, $container);
         $orm = new ORM\ORM(new ORM\Factory($dbal), $schema, commandGenerator: $commandGenerator);
-        $container->add(ORMInterface::class, $orm);
+        $container->addShared(ORMInterface::class, $orm);
     }
 
     /**
