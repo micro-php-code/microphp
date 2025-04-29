@@ -18,7 +18,7 @@ class ConfigProviderScanner
     public function scan(): array
     {
         $finder = new Finder();
-        $finder->in('vendor/microphp/*/src')
+        $finder->in(base_path('/vendor/microphp/*/src'))
             ->files()
             ->depth('==0')
             ->name('ConfigProvider.php');
